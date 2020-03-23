@@ -20,7 +20,8 @@ namespace TRPZ.Business
 
             foreach (Dish dish in dishes)
             {
-                order.DishesWithPreparingTime[dish] = cookService.AssignDishToCookAndReturnWaitingTime(dish);
+                var waitingTime = cookService.AssignDishToCookAndReturnWaitingTime(dish);
+                order.DishesWithPreparingTime.Add(new KeyValuePair<Dish, DateTime>(dish, waitingTime));
             }
 
             return order;
