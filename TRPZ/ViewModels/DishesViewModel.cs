@@ -10,6 +10,21 @@ namespace TRPZ
     public class DishesViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Dish> Dishes { get; set; }
+        public ObservableCollection<KeyValuePair<Dish, int>> AmountOfOrderedDishes { get; set; }
+
+        private Dish selectedDish;
+
+        public Dish SelectedDish
+        {
+            get { return selectedDish; }
+            set 
+            { 
+                selectedDish = value;
+                OnPropertyChanged(nameof(SelectedDish));
+            }
+        }
+
+        private RelayCommand addDishToPotentialOrder;
 
         public DishesViewModel()
         {
@@ -54,6 +69,190 @@ namespace TRPZ
                     CuisineType = CuisineType.Russian,
                     Price = 100m,
                     Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Pelmeni",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Russian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Varenyky",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.Ukrainian,
+                    Price = 100m,
+                    Weight = 200
+                },
+                new Dish
+                {
+                    Name = "Fahitos",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.American,
+                    Price = 100m,
+                    Weight = 150
+                },
+                new Dish
+                {
+                    Name = "Fahitos",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.American,
+                    Price = 100m,
+                    Weight = 150
+                },
+                new Dish
+                {
+                    Name = "Fahitos",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.American,
+                    Price = 100m,
+                    Weight = 150
+                },
+                new Dish
+                {
+                    Name = "Fahitos",
+                    CookingTime = new TimeSpan(0, 20, 0),
+                    CuisineType = CuisineType.American,
+                    Price = 100m,
+                    Weight = 150
                 },
             };
         }
