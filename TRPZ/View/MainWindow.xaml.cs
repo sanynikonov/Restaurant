@@ -24,7 +24,7 @@ namespace TRPZ
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(new OrderServiceMock(new CookServiceMock()));
+            DataContext = App.DependencyResolver.GetService(typeof(MainViewModel));
         }
     }
 }

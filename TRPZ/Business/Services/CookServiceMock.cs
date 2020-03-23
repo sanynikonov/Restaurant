@@ -1,42 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TRPZ.Data;
 
 namespace TRPZ.Business
 {
     public class CookServiceMock : ICookService
     {
         private readonly List<Cook> Cooks;
+        private readonly ICookRepository cookRepository;
 
-        public CookServiceMock()
+        public CookServiceMock(ICookRepository cookRepository)
         {
-            Cooks = new List<Cook>
-            {
-                new Cook
-                {
-                    Name = "B.B. King",
-                    CuisinesSpecializedIn = new List<CuisineType>
-                    {
-                        CuisineType.American, CuisineType.English
-                    },
-                },
-                new Cook
-                {
-                    Name = "Joe Cocker",
-                    CuisinesSpecializedIn = new List<CuisineType>
-                    {
-                        CuisineType.Italian
-                    },
-                },
-                new Cook
-                {
-                    Name = "Eric Clapton",
-                    CuisinesSpecializedIn = new List<CuisineType>
-                    {
-                        CuisineType.Russian, CuisineType.Ukrainian
-                    },
-                }
-            };
+            this.cookRepository = cookRepository;
+            Cooks = new List<Cook>(cookRepository.GetAll());
         }
 
         public DateTime AssignDishToCookAndReturnWaitingTime(Dish dish)
@@ -45,6 +22,9 @@ namespace TRPZ.Business
             if (cook == null)
                 cook = FindLeastBusyCook(dish);
 
+            if (cook.WhenFinishes < DateTime.Now)
+                cook.WhenFinishes = DateTime.Now;
+            
             cook.WhenFinishes += dish.CookingTime;
 
             return cook.WhenFinishes;

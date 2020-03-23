@@ -13,6 +13,8 @@ namespace TRPZ
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly IOrderService orderService;
+        private readonly IDishService dishService;
+
         public ObservableCollection<Dish> Dishes { get; set; }
         public ObservableCollection<OrderedDishWithAmount> AmountOfOrderedDishes { get; set; }
 
@@ -128,77 +130,15 @@ namespace TRPZ
         }
 
 
-        public MainViewModel(IOrderService orderService)
+        public MainViewModel(IOrderService orderService, IDishService dishService)
         {
-            AmountOfOrderedDishes = new ObservableCollection<OrderedDishWithAmount>();
-            Dishes = new ObservableCollection<Dish>
-            {
-                new Dish
-                {
-                    Name = "Fahitos",
-                    CookingTime = new TimeSpan(0, 20, 0),
-                    CuisineType = CuisineType.American,
-                    Price = 100m,
-                    Weight = 150
-                },
-                new Dish
-                {
-                    Name = "Fish & Chips",
-                    CookingTime = new TimeSpan(0, 20, 0),
-                    CuisineType = CuisineType.English,
-                    Price = 100m,
-                    Weight = 100
-                },
-                new Dish
-                {
-                    Name = "Varenyky",
-                    CookingTime = new TimeSpan(0, 20, 0),
-                    CuisineType = CuisineType.Ukrainian,
-                    Price = 100m,
-                    Weight = 200
-                },
-                new Dish
-                {
-                    Name = "Pasta Bolognese",
-                    CookingTime = new TimeSpan(0, 20, 0),
-                    CuisineType = CuisineType.Italian,
-                    Price = 100m,
-                    Weight = 250
-                },
-                new Dish
-                {
-                    Name = "Pelmeni",
-                    CookingTime = new TimeSpan(0, 20, 0),
-                    CuisineType = CuisineType.Russian,
-                    Price = 100m,
-                    Weight = 200
-                },
-            };
-
             this.orderService = orderService;
+            this.dishService = dishService;
+
+            AmountOfOrderedDishes = new ObservableCollection<OrderedDishWithAmount>();
+            Dishes = new ObservableCollection<Dish>(dishService.GetAll());
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-    }
-
-    public class OrderedDishWithAmount : INotifyPropertyChanged
-    {
-        public Dish OrderedDish { get; set; }
-
-        private int amount = 1;
-        public int Amount
-        {
-            get { return amount; }
-            set
-            {
-                amount = value;
-                OnPropertyChanged(nameof(Amount));
-            }
-        }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
