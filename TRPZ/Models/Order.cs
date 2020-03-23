@@ -12,6 +12,7 @@ namespace TRPZ
         public Order()
         {
             DishesWithPreparingTime = new Dictionary<Dish, DateTime>();
+            WhenOrdered = DateTime.Now;
         }
     }
 }
