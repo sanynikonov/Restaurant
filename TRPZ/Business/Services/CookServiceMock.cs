@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TRPZ.Data;
@@ -8,12 +9,15 @@ namespace TRPZ.Business
     public class CookServiceMock : ICookService
     {
         private readonly List<Cook> Cooks;
-        private readonly ICookRepository cookRepository;
+        private readonly IUnitOfWork unit;
+        private readonly IMapper mapper;
 
-        public CookServiceMock(ICookRepository cookRepository)
+        public CookServiceMock(IUnitOfWork unit, IMapper mapper)
         {
-            this.cookRepository = cookRepository;
-            Cooks = new List<Cook>(cookRepository.GetAll());
+            this.unit = unit;
+            this.mapper = mapper;
+            var entities = unit.CookRepository.GetAll();
+            Cooks = new List<Cook>(mapper.Map<IEnumerable<Cook>>(entities));
         }
 
         public DateTime AssignDishToCookAndReturnWaitingTime(Dish dish)

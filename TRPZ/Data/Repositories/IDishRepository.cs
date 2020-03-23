@@ -6,6 +6,6 @@ namespace TRPZ.Data
 {
     public interface IDishRepository
     {
-        IEnumerable<Dish> GetAll();
+        IEnumerable<DishEntity> GetAll();
     }
 }

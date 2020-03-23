@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:TRPZ"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-        <local:MainViewModel x:Key="DishesViewModel"/>
     </Application.Resources>
 </Application>

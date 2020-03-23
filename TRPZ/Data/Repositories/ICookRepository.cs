@@ -6,6 +6,6 @@ namespace TRPZ.Data
 {
     public interface ICookRepository
     {
-        IEnumerable<Cook> GetAll();
+        IEnumerable<CookEntity> GetAll();
     }
 }
