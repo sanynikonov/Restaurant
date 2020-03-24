@@ -14,7 +14,6 @@ namespace TRPZ
         public Cook()
         {
             CuisinesSpecializedIn = new List<CuisineType>();
-            WhenFinishes = DateTime.Now;
         }
     }
 }

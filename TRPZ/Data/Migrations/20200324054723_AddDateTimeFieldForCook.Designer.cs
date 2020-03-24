@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TRPZ.Data;
 
 namespace TRPZ.Data.Migrations
 {
     [DbContext(typeof(EliteRestaurantContext))]
-    partial class EliteRestaurantContextModelSnapshot : ModelSnapshot
+    [Migration("20200324054723_AddDateTimeFieldForCook")]
+    partial class AddDateTimeFieldForCook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

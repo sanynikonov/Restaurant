@@ -18,6 +18,10 @@ namespace TRPZ.Business
                 .ForMember(p => p.CuisinesSpecializedIn,
                     c => c.MapFrom(d => d.CuisinesSpecializedIn
                         .Select(e => Enum.Parse<CuisineType>(e.CuisineType))));
+            CreateMap<Cook, CookEntity>()
+                .ForMember(p => p.CuisinesSpecializedIn,
+                    c => c.MapFrom(d => d.CuisinesSpecializedIn
+                        .Select(e => e.ToString())));
         }
     }
 }
