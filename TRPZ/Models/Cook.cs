@@ -6,6 +6,7 @@ namespace TRPZ
 {
     public class Cook
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<CuisineType> CuisinesSpecializedIn { get; set; }
         public DateTime WhenFinishes { get; set; }
@@ -13,7 +14,6 @@ namespace TRPZ
         public Cook()
         {
             CuisinesSpecializedIn = new List<CuisineType>();
-            WhenFinishes = DateTime.Now;
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Text;
 
 namespace TRPZ.Business
 {
-    public class OrderServiceMock : IOrderService
+    public class OrderService : IOrderService
     {
         private ICookService cookService;
 
-        public OrderServiceMock(ICookService cookService)
+        public OrderService(ICookService cookService)
         {
             this.cookService = cookService;
         }

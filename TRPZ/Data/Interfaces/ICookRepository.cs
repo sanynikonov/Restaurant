@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TRPZ.Data
 {
-    public interface IDishRepository
+    public interface ICookRepository
     {
-        IEnumerable<Dish> GetAll();
+        IEnumerable<CookEntity> GetAll();
     }
 }

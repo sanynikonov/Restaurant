@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -21,11 +24,24 @@ namespace TRPZ
             base.OnStartup(e);
 
             var services = new ServiceCollection();
-            services.AddTransient<IDishRepository, DishRepositoryMock>();
-            services.AddTransient<ICookRepository, CookRepositoryMock>();
+
+            var connectionString = ConfigurationManager.ConnectionStrings["EliteRestaurantDbConnection"].ConnectionString;
+            services.AddDbContext<EliteRestaurantContext>(opt =>
+                opt.UseSqlServer(connectionString));
+
+            var mapperConfig = new MapperConfiguration(c =>
+            {
+                c.AddProfile(new AutomapperConfig());
+            });
+            var mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IDishRepository, DishRepository>();
+            services.AddTransient<ICookRepository, CookRepository>();
             services.AddTransient<IDishService, DishService>();
-            services.AddTransient<ICookService, CookServiceMock>();
-            services.AddTransient<IOrderService, OrderServiceMock>();
+            services.AddTransient<ICookService, CookService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<MainViewModel, MainViewModel>();
 
             DependencyResolver = services.BuildServiceProvider();
