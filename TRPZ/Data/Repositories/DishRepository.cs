@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace TRPZ.Data
 {
-    public class DishRepositoryMock : IDishRepository
+    public class DishRepository : IDishRepository
     {
         private EliteRestaurantContext context;
 
-        public DishRepositoryMock(EliteRestaurantContext context)
+        public DishRepository(EliteRestaurantContext context)
         {
             this.context = context;
         }

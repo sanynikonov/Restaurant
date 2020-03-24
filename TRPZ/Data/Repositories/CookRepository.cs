@@ -5,11 +5,11 @@ using System.Text;
 
 namespace TRPZ.Data
 {
-    public class CookRepositoryMock : ICookRepository
+    public class CookRepository : ICookRepository
     {
         private EliteRestaurantContext context;
 
-        public CookRepositoryMock(EliteRestaurantContext context)
+        public CookRepository(EliteRestaurantContext context)
         {
             this.context = context;
         }

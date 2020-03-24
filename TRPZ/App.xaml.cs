@@ -37,17 +37,14 @@ namespace TRPZ
             services.AddSingleton(mapper);
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IDishRepository, DishRepositoryMock>();
-            services.AddTransient<ICookRepository, CookRepositoryMock>();
+            services.AddTransient<IDishRepository, DishRepository>();
+            services.AddTransient<ICookRepository, CookRepository>();
             services.AddTransient<IDishService, DishService>();
-            services.AddTransient<ICookService, CookServiceMock>();
-            services.AddTransient<IOrderService, OrderServiceMock>();
+            services.AddTransient<ICookService, CookService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<MainViewModel, MainViewModel>();
 
             DependencyResolver = services.BuildServiceProvider();
-
-            
-
         }
 
         public static IServiceProvider DependencyResolver { get; private set; }

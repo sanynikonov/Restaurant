@@ -6,13 +6,13 @@ using TRPZ.Data;
 
 namespace TRPZ.Business
 {
-    public class CookServiceMock : ICookService
+    public class CookService : ICookService
     {
         private readonly List<Cook> Cooks;
         private readonly IUnitOfWork unit;
         private readonly IMapper mapper;
 
-        public CookServiceMock(IUnitOfWork unit, IMapper mapper)
+        public CookService(IUnitOfWork unit, IMapper mapper)
         {
             this.unit = unit;
             this.mapper = mapper;

@@ -7,17 +7,29 @@ namespace TRPZ.Data
     public class UnitOfWork : IUnitOfWork
     {
         private readonly EliteRestaurantContext context;
+        private ICookRepository cookRepository;
+        private IDishRepository dishRepository;
 
-        public UnitOfWork(EliteRestaurantContext context, ICookRepository cookRepository, IDishRepository dishRepository)
+        public UnitOfWork(EliteRestaurantContext context)
         {
             this.context = context;
-            CookRepository = cookRepository;
-            DishRepository = dishRepository;
         }
 
-        public ICookRepository CookRepository { get; }
+        public ICookRepository CookRepository
+        {
+            get
+            {
+                return cookRepository ??= new CookRepository(context);
+            }
+        }
 
-        public IDishRepository DishRepository { get; }
+        public IDishRepository DishRepository
+        {
+            get
+            {
+                return dishRepository ??= new DishRepository(context);
+            }
+        }
 
         public void SaveChanges()
         {
